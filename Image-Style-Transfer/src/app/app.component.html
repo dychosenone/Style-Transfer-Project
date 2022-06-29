@@ -1,0 +1,55 @@
+<link href='https://fonts.googleapis.com/css?family=Nunito Sans' rel='stylesheet'>
+
+<div class="main">
+
+
+  <!--Page 1 is the opening page-->
+  <div class="page1" *ngIf="Page1_Status" (click)="Trigger(1)" [@openClose_Page1]="Page1_Status" [@openClose_Page1]>
+
+    <div class="container-fluid head-block">
+      <h1 class="head-text">Style Transfer Project</h1>
+    </div>
+
+    <div class="containter-fluid desc-block">
+      <p class="desc-text">
+          Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
+          Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
+          when an unknown printer took a galley of type and scrambled it to make a type specimen book. 
+          It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. 
+          It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently 
+          with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+      </p>
+    </div>
+
+    <div class="container-fluid input-block">
+      <button class="glow-on-hover" type="button" (click)="Trigger(1)">Start the Image Style Transfer</button>
+    </div>
+
+  </div>
+  <!--End of Page 1-->
+
+  <!--Page 2 where you input style image-->
+  <div class="page2">
+
+    <div class="frame">
+      <button class="glow-on-hover" type="button" (click)="Trigger(1)"></button>
+      <div class="center">
+        <div class="title">
+          <h1>Drop file to upload</h1>
+        </div>
+    
+        <div class="dropzone">
+          <img src="http://100dayscss.com/codepen/upload.svg" class="upload-icon" />
+          <input type="file" class="upload-input" />
+        </div>
+    
+        <button type="button" class="btn" name="uploadbutton">Upload file</button>
+    
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+<router-outlet></router-outlet>
