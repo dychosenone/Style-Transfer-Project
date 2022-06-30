@@ -41,7 +41,9 @@
           <div class="inner" >
           
             <div class="input-container" *ngIf="Page2_Style_Display" @slide_animation>
-              <img [src]="styleImage" for="style-upload" (click)="style_upload.click()">
+              <div class="image-container">
+                <img [src]="styleImage" for="style-upload" (click)="style_upload.click()">
+              </div>
               <div class="break"></div>
               <label for="style-upload" class="upload btn">Upload Style Image</label>
               <input id="style-upload" type="file" (change)="updateImage($event, 'style')" #style_upload/>
@@ -53,7 +55,9 @@
           <div class="inner">
             
             <div class="input-container" *ngIf="Page2_Content_Display" @slide_animation>
-              <img [src]="contentImage" for="Content-upload" (click)="content_upload.click()">
+              <div class="image-container">
+                <img [src]="contentImage" for="Content-upload" (click)="content_upload.click()">
+              </div>
               <div class="break"></div>
               <label for="content-upload" class="upload btn">Upload Content Image</label>
               <input id="content-upload" type="file" (change)="updateImage($event, 'content')" #content_upload/>

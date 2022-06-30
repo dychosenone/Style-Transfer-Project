@@ -89,9 +89,13 @@ body{
 }
 
 .image-container{
-    margin-top: 5em;
+    height: 450px;
+    width: 450px;
     margin-bottom: 5em;
     text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 input[type="file"] {
@@ -101,8 +105,12 @@ input[type="file"] {
 img{
     width: 450px;
     height: 450px;
-    margin-bottom: 2em;
+
+    padding: 1em;
+
+    object-fit: contain;
 }
+
 
 .input-container{
     text-align: center;

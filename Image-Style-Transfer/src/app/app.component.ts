@@ -86,12 +86,14 @@ export class AppComponent {
     await new Promise(f => setTimeout(f, 510));
 
     this.Page2_Content_Display = !this.Page2_Content_Display;    
+    await new Promise(f => setTimeout(f, 210)); 
     this.Page2_Style_Display = !this.Page2_Style_Display;  
   }
 
 
   async Back(){
-    this.Page2_Content_Display = !this.Page2_Content_Display;    
+    this.Page2_Content_Display = !this.Page2_Content_Display;   
+    await new Promise(f => setTimeout(f, 210)); 
     this.Page2_Style_Display = !this.Page2_Style_Display;  
 
     await new Promise(f => setTimeout(f, 510));
