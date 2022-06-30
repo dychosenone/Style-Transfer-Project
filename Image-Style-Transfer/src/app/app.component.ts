@@ -36,13 +36,10 @@ export class AppComponent {
   Page1_Display = true;
   Page2_Display = false;
 
-  async delay(ms: number) {
-    return new Promise( resolve => setTimeout(resolve, ms) );
-  }
 
   async Start(){
     this.Page1_Display = !this.Page1_Display;
-    await this.delay(510);
+    await new Promise(f => setTimeout(f, 510));
     this.Page2_Display = !this.Page2_Display;
   }
 
