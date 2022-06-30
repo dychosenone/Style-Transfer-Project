@@ -88,12 +88,6 @@ body{
     height: 100%;
 }
 
-
-
-.content-col:hover, .style-col:hover{
-    box-shadow: 0 0 20px black;
-}
-
 .image-container{
     margin-top: 5em;
     margin-bottom: 5em;
@@ -105,8 +99,9 @@ input[type="file"] {
 }
 
 img{
-    width:50%;
-    height: 50%;
+    width: 450px;
+    height: 450px;
+    margin-bottom: 2em;
 }
 
 .input-container{

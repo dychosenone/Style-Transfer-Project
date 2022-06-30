@@ -7,6 +7,7 @@ import {
   transition,
   // ...
 } from '@angular/animations';
+import { SafeUrl, DomSanitizer } from "@angular/platform-browser";
 
 @Component({
   selector: 'app-root',
@@ -58,6 +59,24 @@ export class AppComponent {
   Page2_Content_Display = false;
   Page2_Style_Display = false;
 
+  contentImage: any = "assets/images/imageicon.png"
+  styleImage: any = "assets/images/imageicon.png"
+
+  constructor(private sanitizer: DomSanitizer) {}
+
+  updateImage(ev: any, type: string){
+    if(type == "content"){
+      this.contentImage = this.sanitizer.bypassSecurityTrustUrl(
+        window.URL.createObjectURL(ev.target.files[0])
+      );
+    }
+
+    if (type == "style"){
+      this.styleImage = this.sanitizer.bypassSecurityTrustUrl(
+        window.URL.createObjectURL(ev.target.files[0])
+      );
+    }
+  }
 
   async Start(){
     this.Page1_Display = !this.Page1_Display;

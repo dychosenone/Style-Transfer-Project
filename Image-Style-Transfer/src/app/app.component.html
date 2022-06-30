@@ -34,35 +34,29 @@
   <div class="page2" *ngIf="Page2_Display" @inOutPaneAnimation>
     <div class="container-fluid">
       
-      <button class="btn" (click)="Back()">Back</button>
+      <button class="btn back" (click)="Back()">Back</button>
     
       <div class="row">
         <div class="col-sm style-col">
           <div class="inner" >
-            <div class="image-container" *ngIf="Page2_Style_Display" @slide_animation>
-              <img src="assets/images/imageicon.png" for="style-upload">
-            </div>
-
-            <div class="break"></div>
-
+          
             <div class="input-container" *ngIf="Page2_Style_Display" @slide_animation>
-              <label for="style-upload" class="upload btn">Upload Style Image here</label>
-              <input id="style-upload" type="file"/>
+              <img [src]="styleImage" for="style-upload" (click)="style_upload.click()">
+              <div class="break"></div>
+              <label for="style-upload" class="upload btn">Upload Style Image</label>
+              <input id="style-upload" type="file" (change)="updateImage($event, 'style')" #style_upload/>
             </div>
             
           </div>
         </div>
         <div class="col-sm content-col" >
           <div class="inner">
-            <div class="image-container" *ngIf="Page2_Content_Display" @slide_animation>
-              <img src="assets/images/imageicon.png">
-            </div>
-
-            <div class="break"></div>
             
             <div class="input-container" *ngIf="Page2_Content_Display" @slide_animation>
-              <label for="style-upload" class="upload btn">Upload Style Image here</label>
-              <input id="style-upload" type="file"/>
+              <img [src]="contentImage" for="Content-upload" (click)="content_upload.click()">
+              <div class="break"></div>
+              <label for="content-upload" class="upload btn">Upload Content Image</label>
+              <input id="content-upload" type="file" (change)="updateImage($event, 'content')" #content_upload/>
             </div>
 
           </div>
