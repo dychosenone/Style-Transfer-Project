@@ -22,9 +22,9 @@
     </div>
 
     <div class="container-fluid input-block">
-      <div class="fancy-btn-container">
-        <button class="fancy-btn" (click)="Start()">Start the Image Style Transfer</button>
-      </div>
+      
+      <button class="btn" (click)="Start()">Start the Image Style Transfer</button>
+      
     </div>
 
   </div>
@@ -32,8 +32,37 @@
 
   <!--Page 2 where you input style image-->
   <div class="page2" *ngIf="Page2_Display" @inOutPaneAnimation>
+    <div class="container-fluid">
+      
+      <button class="btn" (click)="Back()">Back</button>
+    
+      <div class="row">
+        <div class="col-sm style-col">
+          <div class="inner" *ngIf="Page2_Style_Display" @slide_animation>
+            <div class="image-container">
+              Image here
+            </div>
 
-    <button></button>
+            <div class="break"></div>
+
+            <button class="btn">Upload Style Image</button>
+          </div>
+        </div>
+        <div class="col-sm content-col" >
+          <div class="inner" *ngIf="Page2_Content_Display" @slide_animation>
+            <div class="image-container">
+              Image here
+            </div>
+
+            <div class="break"></div>
+            <button class="btn ">Upload Content Image</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+   
+   
 
   </div>
 

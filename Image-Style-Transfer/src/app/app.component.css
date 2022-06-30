@@ -26,7 +26,7 @@ body{
 
 .head-text{
     font-family: 'Nunito Sans';
-    color: #f7f7f7
+    color: #d6d6d6
 }
 
 .desc-block{
@@ -34,7 +34,7 @@ body{
 }
 .desc-text{
     font-family: 'Nunito Sans';
-    color: #f7f7f7;
+    color: #d6d6d6;
     text-align: justify;
     line-height: 1.5em;
     font-size: 1.1em;
@@ -44,46 +44,59 @@ body{
     padding: 2em;
     text-align: center;
     font-family: 'Nunito Sans';
-    color: #f7f7f7;
+    color: #d6d6d6;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-
-/* fancy button */
-.fancy-btn-container{
-    background-image: linear-gradient(-45deg,#2cc722,  
-    #12e8eb, #2cc722, #12e8eb);
-    width: fit-content;
-    padding: 1.5px;
-    padding-top: 1.7px;
-    background-size: 400% 400%;
-}
-
-.fancy-btn-container:hover{
-    animation: mymove 1s linear infinite;
-}
-
-.fancy-btn{
-    border: none;
-    font-size: 1.5em;
-    padding: 1em;
-    z-index: 10;
-    background-color: #333;
-    color: #f7f7f7;
-}
-
-@keyframes mymove {
-    0% {
-      background-position: 0% 50%;
-    }
-  
-    100% {
-      background-position: 100% 50%;
-    }  
-}
-
-/* end of fancy button*/
-
 /*Page 2 css*/
+
+.page2{
+    padding-top: 2em;
+}
+
+.break {
+    width: 100%;
+}
+
+.btn{
+    background-color:#222;
+    color: #d6d6d6;
+
+    padding: 1em;
+}
+
+
+.content-col, .style-col{
+    color: #d6d6d6;
+    line-height: 1.5em;
+    font-size: 1.1em;
+
+    flex-flow: row wrap;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 1em;
+    margin-right: 1em;
+
+    transition-duration: .4s;
+    padding-bottom: 2em;
+    margin-top: 2em;
+
+    height: 100%;
+}
+
+
+
+.content-col:hover, .style-col:hover{
+    box-shadow: 0 0 20px black;
+}
+
+.image-container{
+    padding-top: 10em;
+    padding-bottom: 10em;
+    margin-bottom: 5em;
+    text-align: center;
+}
+
