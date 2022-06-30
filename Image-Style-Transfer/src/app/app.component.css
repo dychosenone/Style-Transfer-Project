@@ -68,6 +68,7 @@ body{
 }
 
 
+
 .content-col, .style-col{
     color: #d6d6d6;
     line-height: 1.5em;
@@ -94,9 +95,20 @@ body{
 }
 
 .image-container{
-    padding-top: 10em;
-    padding-bottom: 10em;
+    margin-top: 5em;
     margin-bottom: 5em;
     text-align: center;
 }
 
+input[type="file"] {
+    display: none;
+}
+
+img{
+    width:50%;
+    height: 50%;
+}
+
+.input-container{
+    text-align: center;
+}

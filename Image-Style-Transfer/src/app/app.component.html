@@ -38,24 +38,33 @@
     
       <div class="row">
         <div class="col-sm style-col">
-          <div class="inner" *ngIf="Page2_Style_Display" @slide_animation>
-            <div class="image-container">
-              Image here
+          <div class="inner" >
+            <div class="image-container" *ngIf="Page2_Style_Display" @slide_animation>
+              <img src="assets/images/imageicon.png" for="style-upload">
             </div>
 
             <div class="break"></div>
 
-            <button class="btn">Upload Style Image</button>
+            <div class="input-container" *ngIf="Page2_Style_Display" @slide_animation>
+              <label for="style-upload" class="upload btn">Upload Style Image here</label>
+              <input id="style-upload" type="file"/>
+            </div>
+            
           </div>
         </div>
         <div class="col-sm content-col" >
-          <div class="inner" *ngIf="Page2_Content_Display" @slide_animation>
-            <div class="image-container">
-              Image here
+          <div class="inner">
+            <div class="image-container" *ngIf="Page2_Content_Display" @slide_animation>
+              <img src="assets/images/imageicon.png">
             </div>
 
             <div class="break"></div>
-            <button class="btn ">Upload Content Image</button>
+            
+            <div class="input-container" *ngIf="Page2_Content_Display" @slide_animation>
+              <label for="style-upload" class="upload btn">Upload Style Image here</label>
+              <input id="style-upload" type="file"/>
+            </div>
+
           </div>
         </div>
       </div>
