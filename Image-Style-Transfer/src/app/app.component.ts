@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewEncapsulation } from '@angular/core';
 import {
   trigger,
   state,
@@ -13,29 +13,38 @@ import {
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
   animations: [
-    // animation triggers go here
-    trigger('openClose_Page1', [
-      state('open', style({
-        opacity: '1'
-      })),
-      state('close', style({
-        opacity: '0'
-      })),
-      transition('open => closed', [animate('5s')])
-      
+    trigger("inOutPaneAnimation", [
+      transition(":enter", [
+        style({ opacity: 0}), //apply default styles before animation starts
+        animate(
+          "500ms ease-in-out",
+          style({ opacity: 1})
+        )
+      ]),
+      transition(":leave", [
+        style({ opacity: 1}), //apply default styles before animation starts
+        animate(
+          "500ms ease-in-out",
+          style({ opacity: 0})
+        )
+      ])
     ])
-  ]
+  ],
 })
 export class AppComponent {
   title = 'Image-Style-Transfer';
-  Page1_Status: String = 'open';
-  
-  Trigger(page: any){
-    switch (page){
-      case 1:
-        this.Page1_Status = this.Page1_Status == 'open' ? 'close' : 'open';
-        break;
-    }
-      
+  Page1_Display = true;
+  Page2_Display = false;
+
+  async delay(ms: number) {
+    return new Promise( resolve => setTimeout(resolve, ms) );
   }
+
+  async Start(){
+    this.Page1_Display = !this.Page1_Display;
+    await this.delay(510);
+    this.Page2_Display = !this.Page2_Display;
+  }
+
+  
 }

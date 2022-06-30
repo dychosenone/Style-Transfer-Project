@@ -4,7 +4,7 @@
 
 
   <!--Page 1 is the opening page-->
-  <div class="page1" *ngIf="Page1_Status" (click)="Trigger(1)" [@openClose_Page1]="Page1_Status" [@openClose_Page1]>
+  <div class="page1" *ngIf="Page1_Display" @inOutPaneAnimation>
 
     <div class="container-fluid head-block">
       <h1 class="head-text">Style Transfer Project</h1>
@@ -22,17 +22,17 @@
     </div>
 
     <div class="container-fluid input-block">
-      <button class="glow-on-hover" type="button" (click)="Trigger(1)">Start the Image Style Transfer</button>
+      <button class="glow-on-hover" type="button" (click)="Start()">Start the Image Style Transfer</button>
     </div>
 
   </div>
   <!--End of Page 1-->
 
   <!--Page 2 where you input style image-->
-  <div class="page2">
+  <div class="page2" *ngIf="Page2_Display" @inOutPaneAnimation>
 
     <div class="frame">
-      <button class="glow-on-hover" type="button" (click)="Trigger(1)"></button>
+      <button class="glow-on-hover" type="button"></button>
       <div class="center">
         <div class="title">
           <h1>Drop file to upload</h1>
