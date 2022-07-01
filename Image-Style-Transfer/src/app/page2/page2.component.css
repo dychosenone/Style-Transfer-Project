@@ -1,0 +1,78 @@
+
+.page2{
+    padding-top: 2em;
+    padding-left: 1em;
+    padding-right: 1em;
+}
+
+.break {
+    width: 100%;
+}
+
+.btn{
+    background-color:#222;
+    color: #d6d6d6;
+
+    padding: 1em;
+    padding-left: 2em;
+    padding-right: 2em;
+}
+
+
+
+.content-col, .style-col{
+    color: #d6d6d6;
+    line-height: 1.5em;
+    font-size: 1.1em;
+
+    flex-flow: row wrap;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 1em;
+    margin-right: 1em;
+
+    transition-duration: .4s;
+    padding-bottom: 2em;
+    margin-top: 1em;
+
+    height: 100%;
+}
+
+.image-container{
+    height: 400px;
+    width: 400px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+input[type="file"] {
+    display: none;
+}
+
+img{
+    width: 400px;
+    height: 400px;
+
+    padding: 1em;
+
+    object-fit: contain;
+}
+
+
+.input-container{
+    text-align: center;
+}
+
+.generate-container{
+    text-align: center;
+}
+
+.generate{
+    padding: 1em;
+    font-size: 1.5em;
+    background-color: #222;
+    color: #d6d6d6;
+}
