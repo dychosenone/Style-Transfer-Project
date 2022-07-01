@@ -43,7 +43,7 @@ def processImage():
             styleFile.save(os.path.join(app.config['UPLOAD_FOLDER'], styleFileName))
 
         model = Model()
-        output = model(styleFileName, contentFileName)
+        output = model(contentFileName, styleFileName)
 
         return output
 

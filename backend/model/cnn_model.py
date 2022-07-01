@@ -1,8 +1,21 @@
+'''
+
+Code based on PyTorch Neural Style Transfer and Leon Gaty's Implementation
+https://pytorch.org/tutorials/advanced/neural_style_tutorial.html
+https://github.com/leongatys/PytorchNeuralStyleTransfer
+
+Paper:
+https://www.cv-foundation.org/openaccess/content_cvpr_2016/html/Gatys_Image_Style_Transfer_CVPR_2016_paper.html
+
+'''
+
 import os
-from numpy import iterable
+from numpy import dtype, iterable
 from sympy import content
 
 import torch.optim as optim
+
+import cv2
 
 import torch
 import torch.nn as nn
@@ -11,10 +24,13 @@ import torch.nn.functional as F
 import torchvision.transforms as transforms
 import torchvision.models as models
 
+import uuid
+
 from PIL import Image
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 UPLOAD_FOLDER = './uploads/'
+RESULT_FOLDER = './results/'
 
 
 class ContentLoss(nn.Module):
@@ -62,7 +78,7 @@ class Model():
         self.norm_mean = torch.tensor([0.485, 0.456, 0.406]).to(device)
         self.norm_std = torch.tensor([0.229, 0.224, 0.225]).to(device)
 
-        self.image_size = 128
+        self.image_size = 512
         self.loader = transforms.Compose([transforms.Resize(self.image_size),
                 transforms.ToTensor()])
 
@@ -131,7 +147,11 @@ class Model():
             "Same size required."
 
         inputImg = contentImage.clone()
-        optimizer = optim.Adam([inputImg])
+
+        # Optimizer
+        optimizer = optim.LBFGS([inputImg])
+
+        # optimizer = optim.Adam([inputImg]) # If you want to use Adam as optimizer
 
         i = 0
         for layer in self.cnn.children():
@@ -171,13 +191,17 @@ class Model():
                 if isinstance(self.model[i], ContentLoss) or isinstance(self.model[i], StyleLoss):
                     break
 
+        self.model = self.model[:(i + 1)]
         output = self.styleTransfer(inputImg, styleImage, contentImage, optimizer, 1000000, 1)
 
-        output = output.cpu.clone()
-        output = output.squeeze(0)
-        output = self.unloader(output)
+        image = output.squeeze(0)
+        image = self.unloader(image)
 
-        return output
+        path = os.path.join(RESULT_FOLDER, '{}.png'.format(uuid.uuid4()))
+
+        image.save(path)
+
+        return path
 
 
     # Load Image Function
