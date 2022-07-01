@@ -4,8 +4,8 @@ from click import style
 
 from flask import Flask
 from flask import render_template
-from flask import request
 from werkzeug.utils import secure_filename
+from flask import request
 
 from model.cnn_model import Model
 
@@ -34,18 +34,18 @@ def processImage():
         styleFile = request.files['style']
 
         if contentFile and allowed_file(contentFile.filename):
-            styleFileName = secure_filename(contentFile.filename)
+            contentFileName = secure_filename(contentFile.filename)
             contentFile.save(os.path.join(app.config['UPLOAD_FOLDER'], contentFileName))
 
 
         if styleFile and allowed_file(styleFile.filename):
-            contentFileName = secure_filename(style.filename)
+            styleFileName = secure_filename(styleFile.filename)
             styleFile.save(os.path.join(app.config['UPLOAD_FOLDER'], styleFileName))
 
         model = Model()
-        model(styleFileName, contentFileName)
-        
+        output = model(styleFileName, contentFileName)
 
+        return output
 
     pass
 

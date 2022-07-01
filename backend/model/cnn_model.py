@@ -1,5 +1,8 @@
+import os
+
 from mimetypes import init
 from click import style
+
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
@@ -11,6 +14,8 @@ from PIL import Image
 import matplotlib.pyplot as plt
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+UPLOAD_FOLDER = './uploads/'
+
 
 class ContentLoss(nn.Module):
 
@@ -38,9 +43,20 @@ class StyleLoss(nn.Module):
         G.div_(h*w)
         return G
 
+class Normalization(nn.Module):
+    def __init__(self, mean, std) -> None:
+        super(self, Normalization).__init__()
+
+        self.mean = torch.tensor(mean).view(-1,1,1)
+        self.std = torch.tensor(std).view(-1,1,1)
+
+    def forward(self, image):
+        output = (image - self.mean) / self.std
+        return output
+
 class Model():
 
-    def __init__(self, content_img, style_img) -> None:
+    def __init__(self) -> None:
         self.cnn = models.vgg19(pretrained=True)
 
         self.norm_mean = torch.tensor([0.485, 0.456, 0.406]).to(device)
@@ -50,28 +66,27 @@ class Model():
         self.loader = transforms.Compose([transforms.Resize(self.image_size),
                 transforms.ToTensor()])
 
-        self.unloader = transforms.ToPILImage()
+        self.content_layers_default = ['conv_4']
+        self.style_layers_default = ['conv_1', 'conv_2', 'conv_3', 'conv_4', 'conv_5']
+
+        self.normalization = Normalization(self.norm_mean, self.norm_std)
+
+        self.model = nn.Sequential(self.normalization)
+
+    def styleTransfer():
+        pass
+        
 
     def __call__(self, content_img, style_img) -> None:
+        print(style_img)
+        styleImage = self.loadImage(os.path.join(UPLOAD_FOLDER, style_img))
+        contentImage = self.loadImage(os.path.join(UPLOAD_FOLDER, content_img))
 
-        styleImage = self.loadImage(style_img)
-        contentImage = self.loadImage(content_img)
+        output = self.styleTransfer()
 
-        plt.figure()
-        self.imshow(styleImage)
+        return output
 
         pass
-
-    # View Image Function
-        
-    def imshow(self, tensor, title=None):
-        image = tensor.cpu().clone()  # we clone the tensor to not do changes on it
-        image = image.squeeze(0)      # remove the fake batch dimension
-        image = self.unloader(image)
-        plt.imshow(image)
-        if title is not None:
-            plt.title(title)
-        plt.pause(0.001) # pause a bit so that plots are updated
 
     # Load Image Function
     def loadImage(self, path):
