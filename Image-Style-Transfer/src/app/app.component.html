@@ -1,83 +1,29 @@
 <link href='https://fonts.googleapis.com/css?family=Nunito Sans' rel='stylesheet'>
 
+<page-1 [CurrentPage] = "CurrentPage" (newPageEvent)="SetCurrentPage($event)"></page-1>
+<page-2 [CurrentPage] = "CurrentPage" (newPageEvent)="SetCurrentPage($event)"></page-2>
+<!--
 <div class="main">
 
 
-  <!--Page 1 is the opening page-->
-  <div class="page1" *ngIf="Page1_Display" @inOutPaneAnimation>
+ 
 
-    <div class="container-fluid head-block">
-      <h1 class="head-text">Style Transfer Project</h1>
-    </div>
+  
+  
 
-    <div class="containter-fluid desc-block">
-      <p class="desc-text">
-          Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
-          Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
-          when an unknown printer took a galley of type and scrambled it to make a type specimen book. 
-          It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. 
-          It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently 
-          with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-      </p>
-    </div>
 
-    <div class="container-fluid input-block">
-      
-      <button class="btn" (click)="Start()">Start the Image Style Transfer</button>
-      
-    </div>
-
-  </div>
-  <!--End of Page 1-->
-
-  <!--Page 2 where you input style image-->
-  <div class="page2" *ngIf="Page2_Display" @inOutPaneAnimation>
+  
+  <div class="page3" *ngIf="Page3_Display" @inOutPaneAnimation>
     <div class="container-fluid">
-      
-      <button class="btn back" (click)="Back()">Back</button>
-    
-      <div class="row">
-        <div class="col-sm style-col">
-          <div class="inner" >
-          
-            <div class="input-container" *ngIf="Page2_Style_Display" @slide_animation>
-              <div class="image-container">
-                <img [src]="styleImage" for="style-upload" (click)="style_upload.click()">
-              </div>
-              <div class="break"></div>
-              <label for="style-upload" class="upload btn">Upload Style Image</label>
-              <input id="style-upload" type="file" (change)="updateImage($event, 'style')" #style_upload/>
-            </div>
-            
-          </div>
-        </div>
-        <div class="col-sm content-col" >
-          <div class="inner">
-            
-            <div class="input-container" *ngIf="Page2_Content_Display" @slide_animation>
-              <div class="image-container">
-                <img [src]="contentImage" for="Content-upload" (click)="content_upload.click()">
-              </div>
-              <div class="break"></div>
-              <label for="content-upload" class="upload btn">Upload Content Image</label>
-              <input id="content-upload" type="file" (change)="updateImage($event, 'content')" #content_upload/>
-            </div>
-
-          </div>
-        </div>
-      </div>
+      <button class="btn">Try again</button>
     </div>
-    
-   
-   
-
   </div>
-
+  
   
 
 
 
-</div>
-
+  </div>
+-->
 
 <router-outlet></router-outlet>
