@@ -1,7 +1,10 @@
 <div class="page2" *ngIf="CurrentPage == 2" @InOutAnimation>
     <div class="container-fluid">
       
-      <button class="btn back" (click)="SetCurrentPage(1)">Return</button>
+      <div class="btn-wrapper back">
+        <button class="back btn" (click)="SetCurrentPage(1)">Return</button>
+      </div>
+      
     
       <div class="row">
 
@@ -13,7 +16,11 @@
                 <img [src]="styleImage" for="style-upload" (click)="style_upload.click()">
               </div>
               <div class="break"></div>
-              <label for="style-upload" class="upload btn">Upload Style Image</label>
+              <div class="btn-container">
+                <div class="btn-wrapper upload">
+                  <button class="style-upload btn" (click)="style_upload.click()">Upload Style Image</button>
+                </div>
+              </div>
               <input id="style-upload" type="file" (change)="UpdateImage($event, 'style')" #style_upload/>
             </div>
             
@@ -28,7 +35,11 @@
                 <img [src]="contentImage" for="Content-upload" (click)="content_upload.click()">
               </div>
               <div class="break"></div>
-              <label for="content-upload" class="upload btn">Upload Content Image</label>
+              <div class="btn-container">
+                <div class="btn-wrapper upload">
+                  <button class="content-upload btn" (click)="content_upload.click()">Upload Content Image</button>
+                </div>
+              </div>
               <input id="content-upload" type="file" (change)="UpdateImage($event, 'content')" #content_upload/>
             </div>
 
@@ -37,7 +48,9 @@
 
       </div>
       <div class="container-fluid generate-container">
-        <button class="btn generate" *ngIf="GenerateBtn_Display" @InOutAnimation> Generate new Image</button>
+        <div class="generate btn-wrapper">
+          <button class="generate btn" *ngIf="GenerateBtn_Display" @GenerateBtn (click)="SetCurrentPage(3)"> Generate new Image</button>
+        </div>
       </div>
     </div>
   </div>

@@ -23,16 +23,18 @@ import { SafeUrl, DomSanitizer } from "@angular/platform-browser";
                 )
             ]),
             transition(":leave", [
-                style({ opacity: 1, transform: "translateX(0)" }), //apply default styles before animation starts
+                style({ opacity: 1 }), //apply default styles before animation starts
                 animate(
                     "750ms ease-in-out",
-                    style({ opacity: 0, transform: "translateX(100%)" })
+                    style({ opacity: 0})
                 )
             ])
         ]),
 
         trigger("GenerateBtn", [
-            
+            transition(":enter", [
+                style({opacity: 0}), animate("750ms", style({opacity: 1}))
+            ])
         ])
     ]
 })
