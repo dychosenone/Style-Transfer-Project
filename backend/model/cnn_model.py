@@ -134,8 +134,17 @@ class Model():
 
     def __call__(self, content_img, style_img, filename) -> None:
         print(style_img)
-        styleImage = self.loadImage(os.path.join(UPLOAD_FOLDER, style_img))
-        contentImage = self.loadImage(os.path.join(UPLOAD_FOLDER, content_img))
+       
+        Cont = Image.open(os.path.join(UPLOAD_FOLDER, content_img))
+        w,h=Cont.size
+        new_shape=(w,h)
+        contentImage = self.loadImage(Cont)
+        Style = Image.open(os.path.join(UPLOAD_FOLDER, style_img))
+        Style = Style.resize(new_shape)
+        styleImage = self.loadImage(Style)
+        
+        print(styleImage.size())
+        print(contentImage.size())
 
         assert styleImage.size() == contentImage.size(), \
             "Same size required."
@@ -199,8 +208,10 @@ class Model():
 
 
     # Load Image Function
-    def loadImage(self, path):
-        image = Image.open(path)
+    def loadImage(self, image):
+        
+        
+        
         image = self.loader(image).unsqueeze(0)
 
         return image.to(device, torch.float)
