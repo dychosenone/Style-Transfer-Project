@@ -1,36 +1,68 @@
-'''
+import os
 
-Code taken from: https://github.com/leongatys/PytorchNeuralStyleTransfer
-Paper by Leo Gatys: https://www.cv-foundation.org/openaccess/content_cvpr_2016/papers/Gatys_Image_Style_Transfer_CVPR_2016_paper.pdf
+from flask import Flask
+from werkzeug.utils import secure_filename
+from flask import request
+from flask import send_file
 
-'''
+from model.cnn_model import Model
 
-from PIL import Image
+import uuid
+
+import time
+import threading
+
+UPLOAD_FOLDER = './uploads/'
+RESULT_FOLDER = './results/'
+ALLOWED_EXTENSIONS = {'jpg', 'png'}
+
+app = Flask(__name__)
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+
+def allowed_file(filename):
+    return '.' in filename and \
+           filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
+
+def runModel(filename, contentFileName, styleFileName):
+    model = Model()
+    output = model(contentFileName, styleFileName, filename)
 
 
+@app.route('/processImage', methods=["POST"])
+def processImage():
+    
+    
+    if request.method == "POST":
 
-def load_image(image_file):
-	img = Image.open(image_file)
-	return img
+        contentFile = request.files['content']
+        styleFile = request.files['style']
+
+        if contentFile and allowed_file(contentFile.filename):
+            contentFileName = secure_filename(contentFile.filename)
+            contentFile.save(os.path.join(app.config['UPLOAD_FOLDER'], contentFileName))
 
 
+        if styleFile and allowed_file(styleFile.filename):
+            styleFileName = secure_filename(styleFile.filename)
+            styleFile.save(os.path.join(app.config['UPLOAD_FOLDER'], styleFileName))
 
-def main():
+        outputFileName = str(uuid.uuid4())
 
-    st.title("Photorealistic Style Transfer")
-    st.write("Developed by Lorenz Alog, Jacob Dy, Jose Noblefranca and Patrick Ong")
+        thread = threading.Thread(target=runModel, args=(outputFileName, contentFileName, styleFileName))
+        thread.daemon = True
+        thread.start()
 
-    st.subheader("Upload Images for Style Transfer")
+        return outputFileName
 
-    content_image = st.file_uploader("Upload Content Image", type=["png","jpg","jpeg"])
-    style_image = st.file_uploader("Upload Style Image", type=["png","jpg","jpeg"])
+    pass
 
-    #Final Output
+@app.route('/getImage', methods=["GET"])
+def getImage():
 
-    if style_image is not None:
-        st.subheader("Final Output")
-        st.image(load_image(style_image), width=250)
+    filename = request.form['filename']
+    print(filename)
+    return send_file(os.path.join(RESULT_FOLDER+ filename + '.png'))
 
 
 if __name__ == "__main__":
-    main()
+    app.run(debug=True)

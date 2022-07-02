@@ -210,8 +210,6 @@ class Model():
     # Load Image Function
     def loadImage(self, image):
         
-        
-        
         image = self.loader(image).unsqueeze(0)
 
         return image.to(device, torch.float)
