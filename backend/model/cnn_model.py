@@ -10,12 +10,8 @@ https://www.cv-foundation.org/openaccess/content_cvpr_2016/html/Gatys_Image_Styl
 '''
 
 import os
-from numpy import dtype, iterable
-from sympy import content
 
 import torch.optim as optim
-
-import cv2
 
 import torch
 import torch.nn as nn
@@ -23,8 +19,6 @@ import torch.nn.functional as F
 
 import torchvision.transforms as transforms
 import torchvision.models as models
-
-import uuid
 
 from PIL import Image
 
@@ -138,7 +132,7 @@ class Model():
         return inputImg
         
 
-    def __call__(self, content_img, style_img) -> None:
+    def __call__(self, content_img, style_img, filename) -> None:
         print(style_img)
         styleImage = self.loadImage(os.path.join(UPLOAD_FOLDER, style_img))
         contentImage = self.loadImage(os.path.join(UPLOAD_FOLDER, content_img))
@@ -197,7 +191,7 @@ class Model():
         image = output.squeeze(0)
         image = self.unloader(image)
 
-        path = os.path.join(RESULT_FOLDER, '{}.png'.format(uuid.uuid4()))
+        path = os.path.join(RESULT_FOLDER, '{}.png'.format(filename))
 
         image.save(path)
 
