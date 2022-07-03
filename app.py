@@ -25,7 +25,7 @@ def inputpage():
     return render_template('p2.html')
 
 @app.route('/uploadcontent', methods = ['GET', 'POST'])
-def uploadFile():
+def uploadContent():
     if 'file' not in request.files:
         print('No file part')
         return redirect(request.url)
@@ -37,10 +37,30 @@ def uploadFile():
         filename = secure_filename(contentfile.filename)
         contentfile.save(CONTENT_UPLOAD_FOLDER + filename)
         print('Image successfully uploaded and displayed below')
-        return render_template('p2.html')
+        return ('', 204)
     else:
         print('Allowed image types are - png, jpg, jpeg, gif')
         return redirect(request.url)
+
+@app.route('/uploadstyle', methods = ['GET', 'POST'])
+def uploadStyle():
+    if 'file' not in request.files:
+        print('No file part')
+        return redirect(request.url)
+    stylefile = request.files['file']
+    if stylefile.filename == '':
+        print('No image selected for uploading')
+        return redirect(request.url)
+    if stylefile and allowed_file(stylefile.filename):
+        filename = secure_filename(stylefile.filename)
+        stylefile.save(STYLE_UPLOAD_FOLDER + filename)
+        print('Image successfully uploaded and displayed below')
+        return ('', 204)
+    else:
+        print('Allowed image types are - png, jpg, jpeg, gif')
+        return redirect(request.url)
+
+
 
 if __name__ == "__main__":
     app.run(debug = True)

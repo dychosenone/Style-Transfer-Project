@@ -54,8 +54,20 @@
     </div>
 
     <div class="block-container upload-block">
+
+      <form method="post" action="/uploadstyle" enctype="multipart/form-data" id="submitstyle">
+        <dl>
+            <p>
+                <input type="file" name="file" required class="hidden" id="selectstyle">
+            </p>
+        </dl>
+        <p>
+          
+        </p>
+      </form>
+
       <div class="button-wrap style">
-        <button class="button">
+        <button class="button" id="style">
           Upload Style Image <i class="fas fa-arrow-up arrow"></i>
         </button>
       </div>

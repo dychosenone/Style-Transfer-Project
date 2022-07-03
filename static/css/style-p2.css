@@ -5,7 +5,7 @@
     text-align:center;
 }
 
-.back-block, .content-block, .style-block{
+.back-block, .content-block, .style-block, .process-block{
     opacity: 0;
 }
 
@@ -37,7 +37,6 @@ img{
 
 
 .process-block{
-    
     align-items: center;
     display: flex;
     justify-content: center;
