@@ -2,11 +2,12 @@
 
 from flask import Flask, render_template, flash, request, redirect, url_for
 from werkzeug.utils import secure_filename
+import os
 
 app = Flask(__name__)
 
-CONTENT_UPLOAD_FOLDER = 'content'
-STYLE_UPLOAD_FOLDER = 'style'
+CONTENT_UPLOAD_FOLDER = 'content/'
+STYLE_UPLOAD_FOLDER = 'style/'
 
 app.secret_key = "secret key"
 
@@ -23,12 +24,23 @@ def index():
 def inputpage():
     return render_template('p2.html')
 
-@app.route('/upload', methods = ['GET', 'POST'])
+@app.route('/uploadcontent', methods = ['GET', 'POST'])
 def uploadFile():
-    if request.method == 'POST':
-      f = request.files['file']
-      f.save(CONTENT_UPLOAD_FOLDER + '/' + secure_filename(f.filename))
-      return 'file uploaded successfully'
+    if 'file' not in request.files:
+        flash('No file part')
+        return redirect(request.url)
+    file = request.files['file']
+    if file.filename == '':
+        flash('No image selected for uploading')
+        return redirect(request.url)
+    if file and allowed_file(file.filename):
+        filename = secure_filename(file.filename)
+        file.save(CONTENT_UPLOAD_FOLDER + filename)
+        flash('Image successfully uploaded and displayed below')
+        return render_template('p2.html')
+    else:
+        flash('Allowed image types are - png, jpg, jpeg, gif')
+        return redirect(request.url)
 
 if __name__ == "__main__":
     app.run(debug = True)
