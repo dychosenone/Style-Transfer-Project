@@ -17,6 +17,7 @@
 </div>
 
 <div class="columns">
+  
   <div class="column block-container content-block">
     <h1 class="head-text">Content Image</h1>
     <div class="block-container image-block">
@@ -24,14 +25,28 @@
     </div>
 
     <div class="block-container upload-block">
+
+      <form method="post" action="/upload" enctype="multipart/form-data">
+        <dl>
+            <p>
+                <input type="file" name="file" required>
+            </p>
+        </dl>
+        <p>
+            <input type="submit" value="Submit">
+        </p>
+    </form>
+
       <div class="button-wrap content">
         <button class="button">
           Upload Content Image <i class="fas fa-arrow-up arrow"></i>
         </button>
       </div>
+
     </div>
 
   </div>
+
   <div class="column block-container style-block">
     <h1 class="head-text">Style Image</h1>
     <div class="block-container image-block">
@@ -47,6 +62,16 @@
     </div>
     
   </div>
+</div>
+
+<div class="block-container process-block">
+
+  <div class="button-wrap">
+    <button class="button small" id="process">
+      Generate New Image <i class="fas fa-arrow-right arrow"></i>
+    </button>
+  </div>
+
 </div>
 
 

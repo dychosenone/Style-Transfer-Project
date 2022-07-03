@@ -18,7 +18,7 @@ img{
 }
 
 .image-block{
-    margin-top: 5em;
+    margin-top: 4em;
     width: 100%;
     text-align: center;
 }
@@ -33,6 +33,14 @@ img{
 .back-block{
     margin-top: 1.5em;
     margin-left: 1.5em;
+}
+
+
+.process-block{
+    
+    align-items: center;
+    display: flex;
+    justify-content: center;
 }
 
 .arrow{
@@ -100,6 +108,9 @@ img{
     cursor: pointer;
 }
 
+.hidden{
+    display: none;
+}
 
 @keyframes animation {
     0% {
