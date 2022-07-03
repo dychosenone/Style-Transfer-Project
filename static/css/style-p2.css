@@ -49,22 +49,24 @@ img{
     margin-right: 20px;
 }
 
-.button{
-    padding: 1.5em;
+.button-back, .button-style, .button-content, .button-process{
+    padding: 1em;
     font-size: 1.5em;
     background-color: transparent;
-    color: #ffffffb3 !important; 
+    color: #ffffffb3; 
     border:none;
     border-radius: 5px;
-    transition: 1.2s;
+    transition: 1s;
     font-weight: 500;
 }
 
-.button.small{
-    padding: .5em;
+.button-back, .button-process{
+    font-size: 1.2em;
+    padding: .8em;
 }
 
-.button:hover{
+
+.button-back:hover, .button-style:hover, .button-content:hover, .button-process:hover{
     color: #111 !important;
 }
 

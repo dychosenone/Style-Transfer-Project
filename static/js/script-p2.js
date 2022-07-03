@@ -13,6 +13,19 @@ $(document).ready(function(){
 
 
     $('#back').click(function(){
+
+        $('.button-wrap.back').css(
+            {
+                'background-position' : '100% 50%',
+                'animation': 'none'
+            }
+        )
+
+        $('.button-back').css(
+            {'color' : '#111'}
+        )
+
+
         $('.process-block').animate({'opacity' : 0}, 400);
         $('.style-block').delay(0).animate({'opacity' : 0}, 400, function(){
             $('.content-block').delay(100).animate({'opacity' : 0}, 400, function(){
@@ -30,6 +43,18 @@ $(document).ready(function(){
     $('#submitcontent').on('change', function(){
 
         ifContentSubmitted = 1;
+
+        $('.button-wrap.content').css(
+            {
+                'background-position' : '100% 50%',
+                'animation': 'none'
+            }
+        )
+
+        $('.button-content').css(
+            {'color' : '#111'}
+        )
+
         console.log(ifContentSubmitted);
         ShowProcessBlock();
 
@@ -45,9 +70,23 @@ $(document).ready(function(){
     $('#submitstyle').on('change', function(){
 
         ifStyleSubmitted = 1;
+
+        $('.button-wrap.style').css(
+            {
+                'background-position' : '100% 50%',
+                'animation': 'none'
+            }
+        )
+
+        $('.button-style').css(
+            {'color' : '#111'}
+        )
+
+        $('.button-wrap.style').css({'background-position' : '100% 50%'})
+
         console.log(ifStyleSubmitted);
         ShowProcessBlock();
-        
+
         $('#submitstyle').trigger("submit");
         
     })
