@@ -1,11 +1,41 @@
 {% extends 'base.html' %}
 
 {%block head%}
-
+<link rel="stylesheet" href="{{ url_for('static', filename = 'css/style-p2.css') }}">
 {%endblock%}
 {%block body%}
-<div class="block container head-text-block" id="head">
-    <h1 class="head-text">Image Style Transfer</h1>
+<div class="columns">
+  <div class="column block-container content-block">
+    <h1 class="head-text">Content Image</h1>
+    <div class="block-container image-block">
+        <img src="{{url_for('static', filename="images/uploadicon.png")}}">
+    </div>
+
+    <div class="block-container upload-block">
+      <div class="button-wrap content">
+        <button class="button">
+          Upload Content Image <i class="fas fa-arrow-up"></i>
+        </button>
+      </div>
+    </div>
+
   </div>
+  <div class="column block-container style-block">
+    <h1 class="head-text">Style Image</h1>
+    <div class="block-container image-block">
+      <img src="{{url_for('static', filename="images/uploadicon.png")}}">
+    </div>
+
+    <div class="block-container upload-block">
+      <div class="button-wrap style">
+        <button class="button">
+          Upload Style Image <i class="fas fa-arrow-up"></i>
+        </button>
+      </div>
+    </div>
+    
+  </div>
+</div>
+
 
 {%endblock%}

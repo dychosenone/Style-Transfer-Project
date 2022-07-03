@@ -8,7 +8,12 @@ $(document).ready(function(){
     });
 
     $("#start_transfer").click(function(){
-        $.get("/inputpage");
-        console.log('test');
+        $("#head").delay(150).animate({"opacity": "0"}, 400, function(){
+            $("#body").delay(150).animate({"opacity": "0"}, 400, function(){
+                $("#start").delay(150).animate({"opacity": "0"}, 400, function(){
+                    window.location.replace("/inputpage");
+                });
+            });
+        }); 
     })
 })

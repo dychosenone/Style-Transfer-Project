@@ -8,7 +8,7 @@ app = Flask(__name__)
 def index():
     return render_template('p1.html')
 
-@app.route('/inputpage')
+@app.route('/inputpage/')
 def inputpage():
     return render_template('p2.html')
 
