@@ -26,19 +26,19 @@
 
     <div class="block-container upload-block">
 
-      <form method="post" action="/uploadcontent" enctype="multipart/form-data">
+      <form method="post" action="/uploadcontent" enctype="multipart/form-data" id="submitcontent">
         <dl>
             <p>
-                <input type="file" name="file" required class="">
+                <input type="file" name="file" required class="hidden" id="selectcontent">
             </p>
         </dl>
         <p>
-            <input type="submit" value="Submit" class="">
+          
         </p>
-    </form>
+      </form>
 
-      <div class="button-wrap content">
-        <button class="button">
+      <div class="button-wrap content" id="content">
+        <button class="button" id="content">
           Upload Content Image <i class="fas fa-arrow-up arrow"></i>
         </button>
       </div>

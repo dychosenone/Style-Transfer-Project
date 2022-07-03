@@ -27,19 +27,19 @@ def inputpage():
 @app.route('/uploadcontent', methods = ['GET', 'POST'])
 def uploadFile():
     if 'file' not in request.files:
-        flash('No file part')
+        print('No file part')
         return redirect(request.url)
-    file = request.files['file']
-    if file.filename == '':
-        flash('No image selected for uploading')
+    contentfile = request.files['file']
+    if contentfile.filename == '':
+        print('No image selected for uploading')
         return redirect(request.url)
-    if file and allowed_file(file.filename):
-        filename = secure_filename(file.filename)
-        file.save(CONTENT_UPLOAD_FOLDER + filename)
-        flash('Image successfully uploaded and displayed below')
+    if contentfile and allowed_file(contentfile.filename):
+        filename = secure_filename(contentfile.filename)
+        contentfile.save(CONTENT_UPLOAD_FOLDER + filename)
+        print('Image successfully uploaded and displayed below')
         return render_template('p2.html')
     else:
-        flash('Allowed image types are - png, jpg, jpeg, gif')
+        print('Allowed image types are - png, jpg, jpeg, gif')
         return redirect(request.url)
 
 if __name__ == "__main__":

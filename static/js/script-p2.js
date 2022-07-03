@@ -18,6 +18,9 @@ $(document).ready(function(){
         });
     })
 
-   
+    $('#content').click(function(){
+        $('#selectcontent').click();
+        $('#submitcontent').trigger("submit");
+    })
    
 })
