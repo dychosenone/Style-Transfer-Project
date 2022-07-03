@@ -40,10 +40,15 @@ $(document).ready(function(){
         $('#selectcontent').click()  
     })
 
-    $('#submitcontent').on('change', function(){
+    $('.content-image').click(function(){
+        $('#selectcontent').click()  
+    })
+
+    $('#submitcontent').on('change', function(event){
 
         ifContentSubmitted = 1;
-
+        $('.content-image').attr('src', URL.createObjectURL(event.target.files[0]));
+    
         $('.button-wrap.content').css(
             {
                 'background-position' : '100% 50%',
@@ -67,9 +72,15 @@ $(document).ready(function(){
         $('#selectstyle').click()  
     })
 
-    $('#submitstyle').on('change', function(){
+    $('.style-image').click(function(){
+        $('#selectstyle').click()  
+    })
+
+    $('#submitstyle').on('change', function(event){
 
         ifStyleSubmitted = 1;
+
+        $('.style-image').attr('src', URL.createObjectURL(event.target.files[0]));
 
         $('.button-wrap.style').css(
             {
@@ -92,12 +103,21 @@ $(document).ready(function(){
     })
     // 
 
+    $('#process').click(function(){
+        $('.process-block').animate({'opacity' : 0}, 400);
+        $('.style-block').delay(0).animate({'opacity' : 0}, 400, function(){
+            $('.content-block').delay(100).animate({'opacity' : 0}, 400, function(){
+                $('.back-block').delay(100).animate({'opacity' : 0}, 400, function(){
+                    window.location.replace("/loadingpage");
+                });
+            })
+        });
+    })
+
     function ShowProcessBlock(){
         if (ifContentSubmitted == 1 && ifStyleSubmitted == 1){
             $('.process-block').animate({'opacity' : 1}, 400);
         }
-        
-        
     }
 
 })
