@@ -2,8 +2,20 @@
 
 {%block head%}
 <link rel="stylesheet" href="{{ url_for('static', filename = 'css/style-p2.css') }}">
+<script type="text/javascript" src="{{ url_for('static', filename = 'js/script-p2.js') }}"></script>
 {%endblock%}
 {%block body%}
+
+<div class="block-container back-block">
+
+  <div class="button-wrap back">
+    <button class="button small" id="back">
+      <i class="fas fa-arrow-left arrowreverse"></i> Return
+    </button>
+  </div>
+
+</div>
+
 <div class="columns">
   <div class="column block-container content-block">
     <h1 class="head-text">Content Image</h1>
@@ -14,7 +26,7 @@
     <div class="block-container upload-block">
       <div class="button-wrap content">
         <button class="button">
-          Upload Content Image <i class="fas fa-arrow-up"></i>
+          Upload Content Image <i class="fas fa-arrow-up arrow"></i>
         </button>
       </div>
     </div>
@@ -29,7 +41,7 @@
     <div class="block-container upload-block">
       <div class="button-wrap style">
         <button class="button">
-          Upload Style Image <i class="fas fa-arrow-up"></i>
+          Upload Style Image <i class="fas fa-arrow-up arrow"></i>
         </button>
       </div>
     </div>

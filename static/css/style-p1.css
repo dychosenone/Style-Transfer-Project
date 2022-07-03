@@ -82,6 +82,10 @@
     cursor: pointer;
 }
 
+.arrow{
+    margin-left: 10px;
+}
+
 
 @keyframes animation {
     0% {

@@ -5,6 +5,10 @@
     text-align:center;
 }
 
+.back-block, .content-block, .style-block{
+    opacity: 0;
+}
+
 img{
     height: 200px;
     width: 200px;
@@ -26,8 +30,16 @@ img{
     justify-content: center;
 }
 
-.fa-arrow-up{
-    margin-left: 10px;
+.back-block{
+    margin-top: 1.5em;
+    margin-left: 1.5em;
+}
+
+.arrow{
+    margin-left: 20px;
+}
+.arrowreverse{
+    margin-right: 20px;
 }
 
 .button{
@@ -39,6 +51,10 @@ img{
     border-radius: 5px;
     transition: 1.2s;
     font-weight: 500;
+}
+
+.button.small{
+    padding: .5em;
 }
 
 .button:hover{
