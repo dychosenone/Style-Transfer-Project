@@ -3,7 +3,6 @@
 import os
 
 from asyncio.windows_events import NULL
-from flask import Flask
 from flask import Flask, render_template, flash, request, redirect, url_for, json
 from werkzeug.utils import secure_filename
 from flask import request
@@ -64,7 +63,7 @@ def uploadContent():
         content_img = contentfile
         print(content_img)
         filename = secure_filename(contentfile.filename)
-        contentfile.save(CONTENT_UPLOAD_FOLDER + filename)
+        contentfile.save(UPLOAD_FOLDER + filename)
         print('Image successfully uploaded and displayed below')
         return ('', 204)
     else:
@@ -84,7 +83,7 @@ def uploadStyle():
     if stylefile and allowed_file(stylefile.filename):
         print(style_img)
         filename = secure_filename(stylefile.filename)
-        stylefile.save(STYLE_UPLOAD_FOLDER + filename)
+        stylefile.save(UPLOAD_FOLDER + filename)
         print('Image successfully uploaded and displayed below')
         return ('', 204)
     else:
