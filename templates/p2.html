@@ -1,0 +1,90 @@
+{% extends 'base.html' %}
+
+{%block head%}
+<link rel="stylesheet" href="{{ url_for('static', filename = 'css/style-p2.css') }}">
+<script type="text/javascript" src="{{ url_for('static', filename = 'js/script-p2.js') }}"></script>
+{%endblock%}
+{%block body%}
+
+<div class="block-container back-block">
+
+  <div class="button-wrap back">
+    <button class="button-back" id="back">
+      <i class="fas fa-arrow-left arrowreverse"></i> Return
+    </button>
+  </div>
+
+</div>
+
+<div class="columns">
+  
+  <div class="column block-container content-block">
+    <h1 class="head-text">Content Image</h1>
+    <div class="block-container image-block">
+        <img src="{{url_for('static', filename="images/uploadicon.png")}}" class="content-image">
+    </div>
+
+    <div class="block-container upload-block">
+
+      <form method="post" action="/uploadcontent" enctype="multipart/form-data" id="submitcontent">
+        <dl>
+            <p>
+                <input type="file" name="file" required class="hidden" id="selectcontent">
+            </p>
+        </dl>
+        <p>
+          
+        </p>
+      </form>
+
+      <div class="button-wrap content" id="content">
+        <button class="button-content" id="content">
+          Upload Content Image <i class="fas fa-arrow-up arrow"></i>
+        </button>
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="column block-container style-block">
+    <h1 class="head-text">Style Image</h1>
+    <div class="block-container image-block">
+      <img src="{{url_for('static', filename="images/uploadicon.png")}}" class="style-image">
+    </div>
+
+    <div class="block-container upload-block">
+
+      <form method="post" action="/uploadstyle" enctype="multipart/form-data" id="submitstyle">
+        <dl>
+            <p>
+                <input type="file" name="file" required class="hidden" id="selectstyle">
+            </p>
+        </dl>
+        <p>
+          
+        </p>
+      </form>
+
+      <div class="button-wrap style">
+        <button class="button-style" id="style">
+          Upload Style Image <i class="fas fa-arrow-up arrow"></i>
+        </button>
+      </div>
+    </div>
+    
+  </div>
+</div>
+
+<div class="block-container process-block">
+
+  <div class="button-wrap">
+    <button class="button-process" id="process">
+      Generate New Image <i class="fas fa-arrow-right arrow"></i>
+    </button>
+  </div>
+
+</div>
+
+
+{%endblock%}

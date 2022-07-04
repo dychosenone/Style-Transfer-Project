@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{%block head%}
+<link rel="stylesheet" href="{{ url_for('static', filename = 'css/style-p3.css') }}">
+<script type="text/javascript" src="{{ url_for('static', filename = 'js/script-p3.js') }}"></script>
+{%endblock%}
+{%block body%}
+<div class="block container head-text-block" id="head">
+    <h1 class="head-text">Please wait, your image is being processed...</h1>
+</div>
+
+<div class="block container loading-block">
+    <div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+</div>
+
+<div class="block container sub-text-block">
+    <h1 class="sub-text">This can take up to 3 minutes...</h1>
+</div>
+
+{%endblock%}

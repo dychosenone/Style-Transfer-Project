@@ -1,0 +1,129 @@
+.head-text{
+    font-family: 'Nunito Sans';
+    font-size: 3em;
+    color: #ffffffb3;
+    text-align:center;
+}
+
+.back-block, .content-block, .style-block, .process-block{
+    opacity: 0;
+}
+
+img{
+    height: 400px;
+    width: 400px;
+
+    padding: 2em;
+    border: 5px dashed #ffffffb3;
+}
+
+.image-block{
+    margin-top: 4em;
+    width: 100%;
+    text-align: center;
+}
+
+.upload-block{
+    margin-top: 3em;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+
+.back-block{
+    margin-top: 1.5em;
+    margin-left: 1.5em;
+}
+
+
+.process-block{
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    padding-bottom: 3em;
+}
+
+.arrow{
+    margin-left: 20px;
+}
+.arrowreverse{
+    margin-right: 20px;
+}
+
+.button-back, .button-style, .button-content, .button-process{
+    padding: 1em;
+    font-size: 1.5em;
+    background-color: transparent;
+    color: #ffffffb3; 
+    border:none;
+    border-radius: 5px;
+    transition: 1s;
+    font-weight: 500;
+}
+
+.button-back, .button-process{
+    font-size: 1.2em;
+    padding: .8em;
+}
+
+
+.button-back:hover, .button-style:hover, .button-content:hover, .button-process:hover{
+    color: #111 !important;
+}
+
+.button-wrap.content{
+    background-image: linear-gradient(140deg, rgba(11, 184, 193,0) 50%, #00b4cc 50%);
+}
+
+.button-wrap.style{
+    background-image: linear-gradient(140deg, rgba(11, 184, 193,0) 50%, #13b963 50%);
+}
+
+.button-wrap{
+    width: fit-content;
+    height: fit-content;    
+    padding: .2em;
+  
+    border-radius: 5px;
+
+    border-color: #222;
+    border-style: solid;
+    border-width: 4px;
+
+    background-image: linear-gradient(140deg, rgba(11, 184, 193,0) 50%, rgba(204,170,0,1) 50%);
+
+    background-size: 300% 300%;
+
+    transition: 1s;
+}
+
+.button-wrap:hover{
+    width: fit-content;
+    height: fit-content;
+    border-radius: 5px; 
+    padding: .2em;
+    
+    
+    animation: animation 1s;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+    background-position: 100% 50%;
+    cursor: pointer;
+}
+
+.hidden{
+    display: none;
+}
+
+@keyframes animation {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    100% {
+        background-position: 100% 50%;
+    }
+
+    
+
+ 
+}

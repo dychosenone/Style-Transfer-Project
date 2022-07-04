@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{%block head%}
+<link rel="stylesheet" href="{{ url_for('static', filename = 'css/style-p4.css') }}">
+<script type="text/javascript" src="{{ url_for('static', filename = 'js/script-p4.js') }}"></script>
+{%endblock%}
+{%block body%}
+
+<div class="block container image-result-block">
+    <img src="{{url_for('static', filename = "images/taehoon-kang-16.jpg")}}">
+</div>
+
+<div class="block container footer-block">
+    <div class="columns">
+        <div class="column retry-block">
+
+            <div class="button-wrap retry">
+                <button class="button-retry" id="retry">
+                    <i class="fas fa-arrow-left arrowreverse"></i> Try Again 
+                </button>
+            </div>
+
+        </div>
+        <div class="column source-block">
+
+            <div class="button-wrap source">
+                <button class="button-source" id="source">
+                  See the source code on GitHub <i class="fas fa-arrow-right arrow"></i>
+                </button>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+{%endblock%}
