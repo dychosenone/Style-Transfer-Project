@@ -3,13 +3,13 @@ $(document).ready(function(){
     var ifStyleSubmitted = 0;
     var ifContentSubmitted = 0;
 
-    $( window ).on( "load", function() {
+    //$( window ).on( "load", function() {
         $('.style-block').delay(500).animate({'opacity' : 1}, 400, function(){
             $('.content-block').delay(100).animate({'opacity' : 1}, 400, function(){
                 $('.back-block').delay(100).animate({'opacity' : 1}, 400);
             })
         });
-    });
+    //});
 
 
     $('#back').click(function(){

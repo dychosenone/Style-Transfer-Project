@@ -1,5 +1,5 @@
 $(document).ready(function(){
-    $( window ).on( "load", function() {
+    //$( window ).on( "load", function() {
 
         $.ajax({
             url: '/processimage',
@@ -22,7 +22,7 @@ $(document).ready(function(){
                 
             })
         }); 
-    });
+    //});
 
 
 

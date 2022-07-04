@@ -1,5 +1,5 @@
 $(document).ready(function(){
-    $( window ).on( "load", function() {
+    // $( window ).on( "load", function() {
 
         $('.image-result-block').delay(500).animate({'opacity' : '1'}, 400, function(){
             $(".source-block").delay(100).animate({"opacity": "1"}, 400, function(){
@@ -9,7 +9,7 @@ $(document).ready(function(){
             }); 
         })
        
-    });
+    // });
 
 
     $('#retry').click(function(){
