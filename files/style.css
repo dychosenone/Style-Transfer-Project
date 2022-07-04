@@ -1,0 +1,26 @@
+.head-block{
+    padding: 2em;
+    text-align: center;
+}
+
+.desc-block{
+    padding: 2em 25% 2em 25%;
+}
+.desc-text{
+    text-align: justify;
+    line-height: 1.5em;
+    font-size: 1.1em;
+}
+
+.input-block{
+    padding: 2em;
+    text-align: center;
+}
+.input-text{
+    padding-bottom: 1em;
+}
+.input-btn{
+    padding: 1em 7% 1em 7%;
+    background-color: transparent;
+    border: 1.2px solid black;
+}

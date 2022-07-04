@@ -1,0 +1,30 @@
+<link href='https://fonts.googleapis.com/css?family=Nunito Sans' rel='stylesheet'>
+
+<page-1 [CurrentPage] = "CurrentPage" (newPageEvent)="SetCurrentPage($event)"></page-1>
+<page-2 [CurrentPage] = "CurrentPage" (newPageEvent)="SetCurrentPage($event)"></page-2>
+<page-3 [CurrentPage] = "CurrentPage" (newPageEvent)="SetCurrentPage($event)"></page-3>
+<!--
+<div class="main">
+
+
+ 
+
+  
+  
+
+
+  
+  <div class="page3" *ngIf="Page3_Display" @inOutPaneAnimation>
+    <div class="container-fluid">
+      <button class="btn">Try again</button>
+    </div>
+  </div>
+  
+  
+
+
+
+  </div>
+-->
+
+<router-outlet></router-outlet>

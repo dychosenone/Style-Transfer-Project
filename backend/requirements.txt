@@ -1,0 +1,5 @@
+pytorch
+uuid
+Pillow
+flask
+werkzeug

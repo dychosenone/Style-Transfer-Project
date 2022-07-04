@@ -1,0 +1,56 @@
+<div class="page2" *ngIf="CurrentPage == 2" @InOutAnimation>
+    <div class="container-fluid">
+      
+      <div class="btn-wrapper back">
+        <button class="back btn" (click)="SetCurrentPage(1)">Return</button>
+      </div>
+      
+    
+      <div class="row">
+
+        <div class="col-sm style-col">
+          <div class="inner" >
+          
+            <div class="input-container">
+              <div class="image-container">
+                <img [src]="styleImage" for="style-upload" (click)="style_upload.click()">
+              </div>
+              <div class="break"></div>
+              <div class="btn-container">
+                <div class="btn-wrapper upload">
+                  <button class="style-upload btn" (click)="style_upload.click()">Upload Style Image</button>
+                </div>
+              </div>
+              <input id="style-upload" type="file" (change)="UpdateImage($event, 'style')" #style_upload/>
+            </div>
+            
+          </div>
+        </div>
+
+        <div class="col-sm content-col" >
+          <div class="inner">
+            
+            <div class="input-container">
+              <div class="image-container">
+                <img [src]="contentImage" for="Content-upload" (click)="content_upload.click()">
+              </div>
+              <div class="break"></div>
+              <div class="btn-container">
+                <div class="btn-wrapper upload">
+                  <button class="content-upload btn" (click)="content_upload.click()">Upload Content Image</button>
+                </div>
+              </div>
+              <input id="content-upload" type="file" (change)="UpdateImage($event, 'content')" #content_upload/>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+      <div class="container-fluid generate-container">
+        <div class="generate btn-wrapper">
+          <button class="generate btn" *ngIf="GenerateBtn_Display" @GenerateBtn (click)="SetCurrentPage(3)"> Generate new Image</button>
+        </div>
+      </div>
+    </div>
+  </div>
