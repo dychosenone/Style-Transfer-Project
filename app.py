@@ -32,10 +32,15 @@ def allowed_file(filename):
            
 app.secret_key = "secret key"
 
+sema = threading.Semaphore(value=2)
+threads = list()
+
 
 def runModel(filename, contentFileName, styleFileName):
+    sema.acquire()
     model = Model()
     output = model(contentFileName, styleFileName, filename)
+    sema.release()
 
 @app.route('/')
 def index():
@@ -120,6 +125,7 @@ def processImage():
 
         thread = threading.Thread(target=runModel, args=(outputFileName, contentFile, styleFile))
         thread.daemon = True
+        threads.append(thread)
         thread.start()
 
         return outputFileName
@@ -138,6 +144,5 @@ def getImage(filename):
     return send_from_directory("results", filename)
 
 
-
 if __name__ == "__main__":
-    serve(app, host="0.0.0.0", port=5000)
+    app.run(port=5000)
