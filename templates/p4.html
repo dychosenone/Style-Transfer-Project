@@ -4,11 +4,21 @@
 <link rel="stylesheet" href="{{ url_for('static', filename = 'css/style-p4.css') }}">
 <script type="text/javascript" src="{{ url_for('static', filename = 'js/script-p4.js') }}"></script>
 {%endblock%}
+
 {%block body%}
 
+
+
+{% if result == False %}
+<div class="block container sub-text-block image-result-block">
+    <h1 class="sub-text">No image found. The server may still be processing the image. Please try again later.</h1>
+</div>
+{% else %}
 <div class="block container image-result-block">
     <img width="100%" height="100%" src="{{ url_for('getImage', filename=result) }}">
 </div>
+
+{% endif %}
 
 <div class="block container footer-block">
     <div class="columns">
@@ -34,3 +44,4 @@
 </div>
 
 {%endblock%}
+

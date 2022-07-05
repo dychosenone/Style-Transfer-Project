@@ -53,8 +53,12 @@ def resultpage(result):
 
     # filename = request.args.get('result')
     print(result)
-    
-    return render_template('p4.html', result=os.path.join(result + '.png'))
+
+    check = checkImage(result + '.png')
+    if check == True:
+        return render_template('p4.html', result=os.path.join(result + '.png'))
+    else:
+        return render_template('p4.html', result=False)
 
 @app.route('/uploadcontent', methods = ['GET', 'POST'])
 def uploadContent():
@@ -121,12 +125,18 @@ def processImage():
 
     pass
 
+def checkImage(filename):
+    if(os.path.exists(RESULT_FOLDER + filename)):
+        return True
+    else: 
+        return False
+
 @app.route('/results/<path:filename>', methods=["GET"])
 def getImage(filename):
 
     return send_from_directory("results", filename)
 
-    pass
+
 
 if __name__ == "__main__":
     app.run(debug=True)
