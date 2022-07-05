@@ -22,6 +22,7 @@ import torchvision.models as models
 
 from PIL import Image
 
+
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 UPLOAD_FOLDER = './uploads/'
 RESULT_FOLDER = './results/'

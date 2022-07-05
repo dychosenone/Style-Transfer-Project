@@ -9,6 +9,8 @@ from flask import send_file
 
 from model.cnn_model import Model
 
+from waitress import serve
+
 import uuid
 
 import time
@@ -138,4 +140,4 @@ def getImage(filename):
 
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=5000, debug=True)
+    serve(app, host="0.0.0.0", port=5000, debug=True)
