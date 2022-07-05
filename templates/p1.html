@@ -13,13 +13,7 @@
 
 <div class="block container body-text-block" id="body">
   <h2 class="body-text">
-    Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
-    Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
-    when an unknown printer took a galley of type and scrambled it to make a type specimen book. 
-    It has survived not only five centuries, but also the leap into electronic typesetting, 
-    remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset 
-    sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like 
-    Aldus PageMaker including versions of Lorem Ipsum.
+    The main inspiration for this program comes from Leon Gatys in his 2016 paper titled “Image Style Transfer Using Convolutional Neural Networks”. The style transfer site allows users are able to upload photos of different kinds to the site to see what the photo would look like with the style of another photo. Digital Style Transfer is a technique wherein photos of a said content could be remade (or "styled") into a photo with a said style. Developed by Lorenz Alog, Jacob Dy, Jose Noblefranca and Patrick Ong for the DIGIMAP course.
   </h2>
 </div>
 
@@ -30,10 +24,10 @@
     </button>
   </div>
 </div>
-
-<div class="block container input-block" id="input">
+<form id="getresult">
+<div class="block container input-block" id="input" name="refno">
   <h2 class="body-text">
-    Did you already submitted an image earlier? Input below the ID and click submit to get your image. 
+    Did you already submit an image earlier? Input below the Reference Number and click submit to get your image. 
   </h2>
 
   <input type="text" class="input-text">
@@ -46,6 +40,6 @@
     </button>
   </div>
 </div>
-
+</form>
 
 {% endblock %}

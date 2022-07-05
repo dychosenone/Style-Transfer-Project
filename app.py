@@ -48,12 +48,12 @@ def inputpage():
 def loadingpage():
     return render_template('p3.html')
 
-@app.route('/resultpage/<result>')
+@app.route('/resultpage/<result>', methods=["GET"])
 def resultpage(result):
 
     # filename = request.args.get('result')
     print(result)
-
+    
     return render_template('p4.html', result=os.path.join(result + '.png'))
 
 @app.route('/uploadcontent', methods = ['GET', 'POST'])

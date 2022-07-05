@@ -14,12 +14,15 @@ $(document).ready(function(){
         $(this).css({'width' : ($(this).val().length + 0.5) + 'em'})
     })
      
-    $('#submit').click(function(){
+    $('#submit').click(function(e){
+        e.preventDefault()
         if ($('.input-text').val().length == 0){
             alert('Please input your code!')
         }
         else{
-            //code here..
+            data = $('.input-text').val()
+            console.log(data)
+            window.location.replace(`/resultpage/${data}`)
         }
     })
 
