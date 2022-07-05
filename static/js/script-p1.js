@@ -28,7 +28,7 @@ $(document).ready(function(){
             {'color' : '#111'}
         )
 
-        $('.button-wrap').css(
+        $('.button-wrap.start').css(
             {
                 'background-position' : '100% 50%',
                 'animation': 'none'
@@ -39,7 +39,11 @@ $(document).ready(function(){
         $("#head").animate({"opacity": "0"}, 400, function(){
             $("#body").delay(100).animate({"opacity": "0"}, 400, function(){
                 $("#start").delay(100).animate({"opacity": "0"}, 400, function(){
-                    window.location.replace("/inputpage");
+                    $("#input").delay(100).animate({"opacity": "0"}, 400, function(){
+                        $(".submit-block").animate({"opacity": "0"}, 400, function(){
+                            window.location.replace("/inputpage");
+                        });
+                    });
                 });
             });
         }); 
