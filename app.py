@@ -2,7 +2,6 @@
 
 import os
 
-from asyncio.windows_events import NULL
 from flask import Flask, render_template, flash, request, redirect, send_from_directory, url_for, json, jsonify
 from werkzeug.utils import secure_filename
 from flask import request
