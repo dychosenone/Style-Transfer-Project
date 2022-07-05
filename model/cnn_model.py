@@ -72,7 +72,7 @@ class Model():
         self.norm_mean = torch.tensor([0.485, 0.456, 0.406]).to(device)
         self.norm_std = torch.tensor([0.229, 0.224, 0.225]).to(device)
 
-        self.image_size = 512
+        self.image_size = 256
         self.loader = transforms.Compose([transforms.Resize(self.image_size),
                 transforms.ToTensor()])
 
