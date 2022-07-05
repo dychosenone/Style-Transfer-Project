@@ -135,11 +135,11 @@ class Model():
     def __call__(self, content_img, style_img, filename) -> None:
         print(style_img)
        
-        Cont = Image.open(os.path.join(UPLOAD_FOLDER, content_img))
+        Cont = Image.open(content_img)
         w,h=Cont.size
         new_shape=(w,h)
         contentImage = self.loadImage(Cont)
-        Style = Image.open(os.path.join(UPLOAD_FOLDER, style_img))
+        Style = Image.open(style_img)
         Style = Style.resize(new_shape)
         styleImage = self.loadImage(Style)
         

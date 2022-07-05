@@ -55,7 +55,7 @@
 
     <div class="block-container upload-block">
 
-      <form method="post" action="/uploadstyle" enctype="multipart/form-data" id="submitstyle">
+      <form id="submitstyle">
         <dl>
             <p>
                 <input type="file" name="file" required class="hidden" id="selectstyle">
@@ -66,15 +66,17 @@
         </p>
       </form>
 
-      <div class="button-wrap style">
+      <div class="button-wrap style" id="style">
         <button class="button-style" id="style">
           Upload Style Image <i class="fas fa-arrow-up arrow"></i>
         </button>
       </div>
     </div>
-    
+
   </div>
 </div>
+<p id="styleUUID" style="opacity: 0"></p>
+<p id="contentUUID" style="opacity: 0"></p>
 
 <div class="block-container process-block">
 

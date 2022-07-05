@@ -11,7 +11,7 @@ $(document).ready(function(){
         });
     //});
 
-
+        
     $('#back').click(function(){
 
         $('.button-wrap.back').css(
@@ -67,6 +67,22 @@ $(document).ready(function(){
         
     })
 
+    $("#submitcontent").on('submit', function(e) {
+        e.preventDefault()
+        var formData = new FormData(this)
+        console.log(formData)
+        $.ajax({
+            url: '/uploadcontent',
+            type: 'POST',
+            data: formData,
+            processData: false, 
+            contentType: false,
+            success: function(data) {
+                $("#contentUUID").text(data.uuid)
+            }
+        })
+    })
+
 
     $('#style').click(function(){
         $('#selectstyle').click()  
@@ -101,14 +117,49 @@ $(document).ready(function(){
         $('#submitstyle').trigger("submit");
         
     })
-    // 
+
+    $("#submitstyle").on('submit', function(e) {
+        e.preventDefault()
+        var formData = new FormData(this)
+        console.log(formData)
+        $.ajax({
+            url: '/uploadstyle',
+            type: 'POST',
+            data: formData,
+            processData: false, 
+            contentType: false,
+            success: function(data) {
+                console.log(data.uuid)
+                $("#styleUUID").text(data.uuid)
+            }
+        })
+    })
 
     $('#process').click(function(){
         $('.process-block').animate({'opacity' : 0}, 400);
         $('.style-block').delay(0).animate({'opacity' : 0}, 400, function(){
             $('.content-block').delay(100).animate({'opacity' : 0}, 400, function(){
                 $('.back-block').delay(100).animate({'opacity' : 0}, 400, function(){
-                    window.location.replace("/loadingpage");
+
+                    var style = $("#styleUUID").text()
+                    var content = $("#contentUUID").text()
+                    data = {
+                        style: style, 
+                        content: content
+                    }
+            
+                    $.ajax({
+                        url: '/processImage',
+                        type: 'POST',
+                        contentType: "application/json",
+                        data: JSON.stringify(data),
+                        success: function(data){
+                            window.location.replace("/loadingpage");
+                        }
+                    })
+            
+
+                    
                 });
             })
         });

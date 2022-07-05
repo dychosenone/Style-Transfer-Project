@@ -3,7 +3,7 @@
 import os
 
 from asyncio.windows_events import NULL
-from flask import Flask, render_template, flash, request, redirect, url_for, json
+from flask import Flask, render_template, flash, request, redirect, url_for, json, jsonify
 from werkzeug.utils import secure_filename
 from flask import request
 from flask import send_file
@@ -15,20 +15,22 @@ import uuid
 import time
 import threading
 
-UPLOAD_FOLDER = './uploads/'
+STYLE_FOLDER = './style/'
+CONTENT_FOLDER = './content/'
+
 RESULT_FOLDER = './results/'
 ALLOWED_EXTENSIONS = {'jpg', 'png'}
 
 app = Flask(__name__)
-app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+app.config['STYLE_FOLDER'] = STYLE_FOLDER
+app.config['CONTENT_FOLDER'] = CONTENT_FOLDER
 
 def allowed_file(filename):
     return '.' in filename and \
            filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
            
 app.secret_key = "secret key"
-style_img = None
-content_img = None
+
 
 def runModel(filename, contentFileName, styleFileName):
     model = Model()
@@ -60,61 +62,58 @@ def uploadContent():
         print('No image selected for uploading')
         return redirect(request.url)
     if contentfile and allowed_file(contentfile.filename):
-        content_img = contentfile
-        print(content_img)
-        filename = secure_filename(contentfile.filename)
-        contentfile.save(UPLOAD_FOLDER + filename)
+        filename = str(uuid.uuid4())
+        contentfile.save(os.path.join(CONTENT_FOLDER + filename + '.png'))
         print('Image successfully uploaded and displayed below')
-        return ('', 204)
+        return jsonify(uuid=filename)
     else:
-        print('Allowed image types are - png, jpg, jpeg, gif')
+        print('Allowed image types are - png, jpg')
         return redirect(request.url)
 
 @app.route('/uploadstyle', methods = ['GET', 'POST'])
 def uploadStyle():
+
     if 'file' not in request.files:
         print('No file part')
         return redirect(request.url)
+        
     stylefile = request.files['file']
     style_img = request.files.get('file', '')
+
     if stylefile.filename == '':
         print('No image selected for uploading')
         return redirect(request.url)
+
     if stylefile and allowed_file(stylefile.filename):
-        print(style_img)
-        filename = secure_filename(stylefile.filename)
-        stylefile.save(UPLOAD_FOLDER + filename)
+
+    
+        filename = str(uuid.uuid4())
+        stylefile.save(os.path.join(STYLE_FOLDER + filename + '.png'))
         print('Image successfully uploaded and displayed below')
-        return ('', 204)
+        return jsonify(uuid=filename)
+
     else:
-        print('Allowed image types are - png, jpg, jpeg, gif')
+        print('Allowed image types are - png, jpg')
         return redirect(request.url)
 
 @app.route('/processImage', methods=["POST"])
 def processImage():
     
-    
     if request.method == "POST":
+        
+        style = request.json['style']
+        content = request.json['content']
 
-        contentFile = request.files['content']
-        styleFile = request.files['style']
-
-        if contentFile and allowed_file(contentFile.filename):
-            contentFileName = secure_filename(contentFile.filename)
-            contentFile.save(os.path.join(app.config['UPLOAD_FOLDER'], contentFileName))
-
-
-        if styleFile and allowed_file(styleFile.filename):
-            styleFileName = secure_filename(styleFile.filename)
-            styleFile.save(os.path.join(app.config['UPLOAD_FOLDER'], styleFileName))
+        contentFile = os.path.join(CONTENT_FOLDER + content + '.png')
+        styleFile = os.path.join(STYLE_FOLDER + style + '.png')
 
         outputFileName = str(uuid.uuid4())
 
-        thread = threading.Thread(target=runModel, args=(outputFileName, contentFileName, styleFileName))
+        thread = threading.Thread(target=runModel, args=(outputFileName, contentFile, styleFile))
         thread.daemon = True
         thread.start()
 
-        return outputFileName
+        return jsonify(results = outputFileName)
 
     pass
 
