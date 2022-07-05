@@ -195,7 +195,7 @@ class Model():
                     break
 
         self.model = self.model[:(i + 1)]
-        output = self.styleTransfer(inputImg, styleImage, contentImage, optimizer, 1000000, 1)
+        output = self.styleTransfer(inputImg, styleImage, contentImage, optimizer, 10000, 100)
 
         image = output.squeeze(0)
         image = self.unloader(image)

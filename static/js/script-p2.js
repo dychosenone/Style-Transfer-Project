@@ -160,10 +160,10 @@ $(document).ready(function(){
                         contentType: "application/json",
                         data: JSON.stringify(data),
                         success: function(data){
+                            sessionStorage.setItem('uuid', data)
                             window.location.replace("/loadingpage");
                         }
                     })
-            
 
                     
                 });

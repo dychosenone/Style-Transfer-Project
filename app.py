@@ -3,7 +3,7 @@
 import os
 
 from asyncio.windows_events import NULL
-from flask import Flask, render_template, flash, request, redirect, url_for, json, jsonify
+from flask import Flask, render_template, flash, request, redirect, send_from_directory, url_for, json, jsonify
 from werkzeug.utils import secure_filename
 from flask import request
 from flask import send_file
@@ -48,9 +48,13 @@ def inputpage():
 def loadingpage():
     return render_template('p3.html')
 
-@app.route('/resultpage/')
-def resultpage():
-    return render_template('p4.html')
+@app.route('/resultpage/<result>')
+def resultpage(result):
+
+    # filename = request.args.get('result')
+    print(result)
+
+    return render_template('p4.html', result=os.path.join(result + '.png'))
 
 @app.route('/uploadcontent', methods = ['GET', 'POST'])
 def uploadContent():
@@ -113,17 +117,16 @@ def processImage():
         thread.daemon = True
         thread.start()
 
-        return jsonify(results = outputFileName)
+        return outputFileName
 
     pass
 
-@app.route('/getImage', methods=["GET"])
-def getImage():
+@app.route('/results/<path:filename>', methods=["GET"])
+def getImage(filename):
 
-    filename = request.form['filename']
-    print(filename)
-    return send_file(os.path.join(RESULT_FOLDER+ filename + '.png'))
+    return send_from_directory("results", filename)
 
+    pass
 
 if __name__ == "__main__":
     app.run(debug=True)
