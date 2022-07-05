@@ -39,6 +39,8 @@ $(document).ready(function(){
         $("#head").animate({"opacity": "0"}, 400, function(){
             $("#body").delay(100).animate({"opacity": "0"}, 400, function(){
                 $("#start").delay(100).animate({"opacity": "0"}, 400, function(){
+                    $("#input").delay(100).animate({"opacity": "1"}, 400);
+                    $(".submit-block").delay(100).animate({"opacity": "1"}, 400);
                     window.location.replace("/inputpage");
                 });
             });
