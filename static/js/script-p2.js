@@ -45,26 +45,29 @@ $(document).ready(function(){
     })
 
     $('#submitcontent').on('change', function(event){
-
-        ifContentSubmitted = 1;
-        $('.content-image').attr('src', URL.createObjectURL(event.target.files[0]));
-    
-        $('.button-wrap.content').css(
-            {
-                'background-position' : '100% 50%',
-                'animation': 'none'
-            }
-        )
-
-        $('.button-content').css(
-            {'color' : '#111'}
-        )
-
-        console.log(ifContentSubmitted);
-        ShowProcessBlock();
-
-        $('#submitcontent').trigger("submit");
+        if (event.target.files[0].type.split("/")[0] === 'image'){
+            ifContentSubmitted = 1;
+            $('.content-image').attr('src', URL.createObjectURL(event.target.files[0]));
         
+            $('.button-wrap.content').css(
+                {
+                    'background-position' : '100% 50%',
+                    'animation': 'none'
+                }
+            )
+
+            $('.button-content').css(
+                {'color' : '#111'}
+            )
+
+            console.log(ifContentSubmitted);
+            ShowProcessBlock();
+
+            $('#submitcontent').trigger("submit");
+        }
+        else{
+            alert('Please upload an image.');
+        }
     })
 
     $("#submitcontent").on('submit', function(e) {
@@ -93,29 +96,32 @@ $(document).ready(function(){
     })
 
     $('#submitstyle').on('change', function(event){
+        if (event.target.files[0].type.split("/")[0] === 'image'){
+            ifStyleSubmitted = 1;
 
-        ifStyleSubmitted = 1;
+            $('.style-image').attr('src', URL.createObjectURL(event.target.files[0]));
 
-        $('.style-image').attr('src', URL.createObjectURL(event.target.files[0]));
+            $('.button-wrap.style').css(
+                {
+                    'background-position' : '100% 50%',
+                    'animation': 'none'
+                }
+            )
 
-        $('.button-wrap.style').css(
-            {
-                'background-position' : '100% 50%',
-                'animation': 'none'
-            }
-        )
+            $('.button-style').css(
+                {'color' : '#111'}
+            )
 
-        $('.button-style').css(
-            {'color' : '#111'}
-        )
+            $('.button-wrap.style').css({'background-position' : '100% 50%'})
 
-        $('.button-wrap.style').css({'background-position' : '100% 50%'})
+            console.log(ifStyleSubmitted);
+            ShowProcessBlock();
 
-        console.log(ifStyleSubmitted);
-        ShowProcessBlock();
-
-        $('#submitstyle').trigger("submit");
-        
+            $('#submitstyle').trigger("submit");
+        }
+        else{
+            alert('Please upload an image.');
+        }  
     })
 
     $("#submitstyle").on('submit', function(e) {
